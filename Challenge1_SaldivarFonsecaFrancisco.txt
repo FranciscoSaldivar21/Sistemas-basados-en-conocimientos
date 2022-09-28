@@ -1,0 +1,44 @@
+Saldivar Fonseca Francisco
+Sistemas basados en conocimientos	
+Challenge 1
+
+
+//Contexto del video del material
+
+
+(assert (is-monkey onFloor))
+(assert (is-box onFloor))
+(assert (is-monkey inRoom))
+(assert (is-box inRoom))
+(assert (is-banana inRoom))
+(assert (is-banana atCeiling))
+
+(assert (monkey strong))
+(assert (monkey grasp))
+(assert (monkey climb-box))
+
+(defrule push(monkey strong) => (assert(monkey push-box)))
+(defrule under(monkey push-box) => (assert(box is-under)))
+(defrule canreach(box is-under) => (assert (monkey can-reach)))
+(defrule canget(is-banana inRoom)(is-banana atCeiling)(is-under banana)(climb-box monkey) => (assert(monkey can-get)))
+(defrule take(monkey can-reach)(monkey grasp) => (printout t "Monkeys have the bananas" crlf))
+
+
+
+//Contexto tomado en clase
+
+
+(assert (monkey in-front-door))
+(assert (monkey free-hands))
+(assert (banana atCeiling))
+(assert (box below-window))
+
+(defrule monkeyMove(monkey in-front-door) => (assert(monkey at-box))(assert(monkey below-window)))
+(defrule takeBox(monkey free-hands)(monkey at-box) => (assert(monkey has-box))(retract monkey free-hands)))
+(defrule walk-below-banana(monkey has-box)(monkey below-window) => (assert(monkey below-banana))(retract(monkey below-window))(retract(box below-window)))
+(defrule box-on-floor(monkey has-box)(monkey below-banana) => (assert(box on-floor))(assert(monkey free-hands))(retract(monkey has-box)))
+(defrule climb-box(monkey free-hands)(monkey below-banana)(box on-floor) => (assert(monkey above-box)))
+(defrule take-banana(monkey above-box)(monkey free-hands) => (assert(monkey has-banana))(retract(monkey free-hands)))
+(defrule get-off-box(monkey has-banana)(monkey above-box) => (assert(monkey on-floor))(retract(monkey above-box))(retract(banana atCeiling)))
+(defrule eat(monkey on-floor)(monkey has-banana) => (assert(monkey ate-banana))
+(defrule end(monkey ate-banana) => (printout t "Monkeys have the bananas" crlf))
