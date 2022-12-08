@@ -1,0 +1,3 @@
+(deftemplate diagnostico
+   	(slot enfermedad)
+)

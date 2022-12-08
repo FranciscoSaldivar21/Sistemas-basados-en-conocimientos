@@ -1,0 +1,5 @@
+(defrule gripe(sintoma fiebre)(sintoma mucosidad)(sintoma dolorGarganta) => (printout t "Tienes gripa" crlf))
+(defrule dengue(sintoma fiebre)(sintoma dolorCuerpo)(sintoma asco) => (printout t "Tienes dengue" crlf))
+(defrule covid(sintoma noSabor)(sintoma noOlfato)(sintoma diarrea) => (printout t "Tienes covid" crlf))
+(defrule diarrea(sintoma vomito)(sintoma fiebre)(sintoma dolorEstomago) => (printout t "Tienes diarrea" crlf))
+(defrule resfriado(sintoma fiebre)(sintoma dolorCuerpo)(sintoma dolorCabeza) => (printout t "Solo estas resfriado" crlf))

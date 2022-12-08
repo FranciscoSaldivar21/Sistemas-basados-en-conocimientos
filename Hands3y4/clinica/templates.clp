@@ -1,0 +1,3 @@
+(deftemplate patient
+   	(slot status)
+)

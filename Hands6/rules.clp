@@ -1,0 +1,5 @@
+(defrule gripe(sintoma fiebre)(sintoma mucosidad)(sintoma dolorGarganta) => (assert (diagnostico(enfermedad gripe))))
+(defrule dengue(sintoma fiebre)(sintoma dolorCuerpo)(sintoma asco) => (assert (diagnostico(enfermedad dengue))))
+(defrule covid(sintoma noSabor)(sintoma noOlfato)(sintoma diarrea) => (assert (diagnostico(enfermedad covid))))
+(defrule diarrea(sintoma vomito)(sintoma fiebre)(sintoma dolorEstomago) => (assert (diagnostico(enfermedad diarrea))))
+(defrule resfriado(sintoma fiebre)(sintoma dolorCuerpo)(sintoma dolorCabeza) => (assert (diagnostico(enfermedad resfriado))))
